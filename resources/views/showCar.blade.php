@@ -45,7 +45,8 @@
         <p class="date">Updated at: <span id="updated-at">{{$car->updated_at}}</span></p>
         <p class="date">Created at: <span id="created-at">{{$car->created_at}}</span></p>
         <p class="date">Published: <span id="published"> {{$car->published? "published" : "Not published"}}</span></p>
-        <p>{{$car->description}}</p>
+        <p>{{$car->category->cat_name}}</p>
+        <p></p>
     </div>
 </body>
 

@@ -41,6 +41,22 @@
       <input type="file" class="form-control" id="image" placeholder="Enter image" name="image">
     </div>
 
+      {{-- Update category --}}
+<div class="form-group">
+  <label for="category">Category:</label>
+  <select name="category_id" id="category">
+    @foreach ($categories as $category)
+      <option value="{{ $category->id }}" @if ($car->category_id == $category->id) selected @endif>
+        {{ $category->cat_name }}
+      </option>
+    @endforeach
+  </select>
+  @error('category_id')
+    {{ $message }}
+  @enderror
+</div>
+
+    
 
 
     <div class="checkbox">

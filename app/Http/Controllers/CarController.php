@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car ;
+use App\Models\Category ;
 use App\Traits\Common;
 
 
@@ -27,7 +28,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('addCar');
+        $categories = Category::get();
+        return view('addCar',compact('categories'));
     }
 
     /**
@@ -58,6 +60,7 @@ class CarController extends Controller
             'title' => 'required|string|max:50',
             'description' => 'required|string',
             'image'=> 'required|mimes:png,jpg,jpeg|max:2048',
+            'category_id' => 'required',
 
 
         ],$messages);
@@ -88,7 +91,9 @@ class CarController extends Controller
     public function edit(string $id)
     {
         $car = Car::findOrFail($id);
-        return view('updateCar',compact('car'));
+        $categories = Category::all();
+        return view('updateCar',compact('car','categories'));
+       
     }
 
     /**
