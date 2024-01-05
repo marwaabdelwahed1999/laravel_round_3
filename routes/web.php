@@ -140,7 +140,7 @@ Route::get('/login',function () {
 
 // Routs for cars tables
 // Route::get('storeCar',[CarController::class,'store']);
-Route::get('createCar',[CarController::class,'create'])->name('createCar');
+Route::get('createCar',[CarController::class,'create'])->middleware('verified')->name('createCar');
 // Route::put('storeCar',[CarController::class,'store'])->name('storeCar');
 Route::get('cars',[CarController::class,'index'])->name('cars');
 Route::get('editCar/{id}',[CarController::class,'edit']);
@@ -201,3 +201,7 @@ Route::get('contactUs',function () {
     return view('contactU');
     
 })->name('contactUs');
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
