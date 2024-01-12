@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\ContactUsController;
+
 
 
 /*
@@ -205,3 +207,12 @@ Route::get('contactUs',function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// email contact us routes
+Route::get('/contact-us', [ContactUsController::class, 'showForm'])->name('contact.form');
+Route::post('/contact-us', [ContactUsController::class, 'sendEmail'])->name('contact.send');
+Route::get('success',function () {
+    return view('successEmail');
+    
+})->name('success');
