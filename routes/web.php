@@ -142,7 +142,13 @@ Route::get('/login',function () {
 
 // Routs for cars tables
 // Route::get('storeCar',[CarController::class,'store']);
-Route::get('createCar',[CarController::class,'create'])->middleware('verified')->name('createCar');
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ 
+        Route::get('createCar',[CarController::class,'create'])->middleware('verified')->name('createCar');
 // Route::put('storeCar',[CarController::class,'store'])->name('storeCar');
 Route::get('cars',[CarController::class,'index'])->name('cars');
 Route::get('editCar/{id}',[CarController::class,'edit']);
@@ -153,6 +159,9 @@ Route::get('deleteCar/{id}',[CarController::class,'destroy']);
 Route::get('trashed',[CarController::class,'trashed'])->name('trashed');
 Route::get('forceDelete/{id}',[CarController::class,'forceDelete'])->name('forceDelete');
 Route::get('restoreCar/{id}',[CarController::class,'restore'])->name('restoreCar');
+
+
+    });
 
 
 

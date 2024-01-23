@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactUsMail;
 use Swift_TransportException;
+use App\Models\Contact_UsMail;
 
 
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class ContactUsController extends Controller
             'subject' => 'required|string',
             'message' => 'required|string',
         ]);
+        Contact_UsMail::create($data);
 
         try {
 

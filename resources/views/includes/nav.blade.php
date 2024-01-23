@@ -19,6 +19,9 @@
       <li class="active"><a href="{{route('cars')}}">Home</a></li>
       <li><a href="{{route('createCar')}}">Insert Car</a></li>
       <li><a href="{{route('trashed')}}">Trashed Cars</a></li>
+      <li><a href="{{ LaravelLocalization::getLocalizedURL('en') }}">En</a></li>
+      <li><a href="{{ LaravelLocalization::getLocalizedURL('ar') }}">عربي</a></li>
+   
       {{-- <li><a href="/posts">Posts</a></li>
       <li><a href="{{route('createPost')}}">Insert Post</a></li>
       <li><a href="{{route('trashed_post')}}">Trashed Posts</a></li> --}}
